@@ -8,11 +8,12 @@ var userclickedPattern = [];
 $(".btn").click(function() {
 
     var userChosenColour = $(this).attr("id");
-    userClickedPattern.push(userChosenColour);
+    userclickedPattern.push(userChosenColour);
   
     //when a user clicks on a button, the corresponding sound should be played.
     playSound(userChosenColour);
 
+    console.log(userclickedPattern)
   });
 
 
