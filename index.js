@@ -102,9 +102,22 @@ function checkAnswer (currentLevel1) {
 
     $("h1").text("Game Over, Press Any Key to Restart")
 
+    //Calling startOver when the user fails
+    startOver();
+
   }
 }
 
+
+//Creating startOver function
+function startOver (){
+
+  //reseting the values of level, gamePattern and started variables.
+  level = 0;
+  gamePattern = [];
+  started = false;
+
+}
 
 
 
