@@ -31,9 +31,16 @@ $(".btn").click(function() {
 
   playSound(userChosenColour);
   animatePress(userChosenColour);
+
+
+  //Calling checkAnswer() after a user has clicked and chosen their answer
+  checkAnswer(userClickedPattern.length-1);
 });
 
 function nextSequence() {
+
+  //Once nextSequence() is triggered, reset the userClickedPattern to an empty array ready for the next level.
+  userClickedPattern = [];
 
   // Increase the level by 1 every time nextSequence() is called.
   level++;
@@ -64,6 +71,55 @@ function animatePress(currentColor) {
     $("#" + currentColor).removeClass("pressed");
   }, 100);
 }
+
+
+function checkAnswer (currentLevel1) {
+
+  if (gamePattern[currentLevel1] === userClickedPattern[currentLevel1]) {
+    console.log ("success")
+
+    //If the user got the most recent answer right 
+    if (userClickedPattern.length === gamePattern.length) {
+
+      //Calling nextSequence after 1000 millisecond of delay
+      setTimeout(function(){
+        nextSequence();
+      }, 1000)
+    }
+  }else {
+    console.log("wrong");
+
+    //If wrong then play this sound
+    playSound("wrong");
+
+    //Add a this class if wrong
+    $("body").addClass("game-over");
+
+    //removing the class after 200 milliseconds
+    setTimeout(function(){
+      $("body").removeClass("game-over")
+    }, 200)
+
+    $("h1").text("Game Over, Press Any Key to Restart")
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
