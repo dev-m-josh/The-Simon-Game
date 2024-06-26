@@ -12,8 +12,8 @@ $(".btn").click(function() {
   
     //when a user clicks on a button, the corresponding sound should be played.
     playSound(userChosenColour);
+    animatePress(userChosenColour);
 
-    console.log(userclickedPattern)
   });
 
 
@@ -31,7 +31,17 @@ function nextSequence() {
     playSound (randomChosenColour);
 }
 
+  //Adding Animation
 
+  function animatePress (currentcolor ){
+    $("#" + currentcolor).addClass("pressed");
+  
+    setTimeout (function() {
+      $("#" +  currentcolor).removeClass("pressed");
+    },100);
+  }
+
+  
 function playSound(name) {
 
     //
